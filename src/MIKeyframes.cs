@@ -14,6 +14,8 @@
 		public decimal? BEND_ANGLE_Y { get; set; }
 		public decimal? BEND_ANGLE_Z { get; set; }
 
+		public string? TRANSITION { get; set; }
+
 		public Values
 			(
 			decimal? POS_X = null,
@@ -24,7 +26,8 @@
 			decimal? ROT_Z = null,
 			decimal? BEND_ANGLE_X = null,
 			decimal? BEND_ANGLE_Y = null,
-			decimal? BEND_ANGLE_Z = null
+			decimal? BEND_ANGLE_Z = null,
+			string? TRANSITION = null
 			)
 		{
 			this.POS_X = POS_X;
@@ -38,6 +41,8 @@
 			this.BEND_ANGLE_X = BEND_ANGLE_X;
 			this.BEND_ANGLE_Y = BEND_ANGLE_Y;
 			this.BEND_ANGLE_Z = BEND_ANGLE_Z;
+
+			this.TRANSITION = TRANSITION;
 		}
 	}
 	internal class Keyframe
@@ -51,7 +56,7 @@
 		#region 생성자와 변수
 		public int format { get; set; }
 		public string created_in { get; set; }
-		public bool is_model {get; set;}
+		public bool is_model { get; set; }
 		public int tempo { get; set; }
 		public int length { get; set; }
 
@@ -70,19 +75,32 @@
 		}
 		#endregion
 
-		#region 메서드
+		#region public 메서드
+		/// <summary>
+		/// MakeKeyframe 메서드와 AddKeyframe 메서드를 합해둔 메서드.
+		/// </summary>
+		/// <param name="pos">타임라인 상의 위치</param>
+		/// <param name="part_name">부위 이름(비었을 시 전체)</param>
+		/// <param name="values">Values 객체</param>
+		public void MakeAndAddKeyframe(int pos, string? part_name = null, Values? values = null)
+		{
+			AddKeyframe(MakeKeyframe(pos, part_name, values));
+		}
+		#endregion
+
+		#region private 메서드
 		/// <summary>정보를 받아 Keyframe 객체를 만든다.</summary>
 		/// <param name="pos">타임라인 상의 위치</param>
-		/// <param name="part_name">부위 이름(비었을 시 본인)</param>
+		/// <param name="part_name">부위 이름(비었을 시 전체)</param>
 		/// <param name="values">Values 객체</param>
 		/// <returns>Keyframe 객체</returns>
-		public Keyframe MakeKeyframe(int pos, string? part_name = null, Values? values = null)
+		private Keyframe MakeKeyframe(int pos, string? part_name = null, Values? values = null)
 		{
 			Keyframe kf = new Keyframe();
 
 			kf.position = pos;
-			kf.part_name = part_name ?? null;
-			kf.values = values ?? null;
+			kf.part_name = part_name;
+			kf.values = values;
 
 			return kf;
 		}
@@ -91,7 +109,7 @@
 		/// 키프레임을 배열에 추가한다.
 		/// </summary>
 		/// <param name="kf">Keyframe 객체</param>
-		public void AddKeyframe(Keyframe kf)
+		private void AddKeyframe(Keyframe kf)
 		{
 			keyframes = keyframes.Append(kf).ToArray();
 		}

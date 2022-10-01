@@ -14,7 +14,7 @@
 		/// <param name="jMI">Serialized한 키프레임들</param>
 		/// <param name="path">저장 위치</param>
 		/// <returns>작업 성공 여부</returns>
-		static public void WriteMIKeyframes(string jMI, string path, string filename="output")
+		static public void WriteMIKeyframes(string jMI, string path, string filename = "output")
 		{
 			File.WriteAllText($"{path}\\{filename}.miframes", jMI);
 		}
