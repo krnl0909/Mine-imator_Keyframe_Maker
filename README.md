@@ -23,10 +23,6 @@ Which make the character rotate its arm 30˚ while bending it 30˚.
 
 - Maybe add motion capture?
 
-## License
-
-[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
-
 ## Demos from Outdated Releases
 
 ### 0.1.0
@@ -37,6 +33,10 @@ Which make the character rotate its arm 30˚ while bending it 30˚.
 miKeyframes.AddKeyframe(miKeyframes.MakeKeyframe(0, values: new Values(POS_X: 0, POS_Y: 0, POS_Z: 0)));
 miKeyframes.AddKeyframe(miKeyframes.MakeKeyframe(24, values: new Values(POS_X: 50, POS_Y: 0, POS_Z: 0, ROT_Z: 50)));
 ```
+
+## License
+
+[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Release Notes
 ### 0.1.2
