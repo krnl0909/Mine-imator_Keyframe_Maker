@@ -1,6 +1,6 @@
 # Mine-imator Keyframe Maker (WIP)
 
-A software to create mine-imator keyframes without actually using the program.
+A software to create [Mine-imator](https://github.com/stuffbydavid/Mine-imator) keyframes without actually using the program.
 
 ## Demo
 
