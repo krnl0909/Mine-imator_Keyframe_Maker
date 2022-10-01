@@ -27,7 +27,7 @@ Which make the character rotate its arm 30˚ while bending it 30˚.
 
 [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
 
-## Demos from Previous releases
+## Demos from Outdated Releases
 
 ### 0.1.0
 
@@ -39,10 +39,13 @@ miKeyframes.AddKeyframe(miKeyframes.MakeKeyframe(24, values: new Values(POS_X: 5
 ```
 
 ## Release Notes
+### 0.1.2
+* Added `TRANSITION` property in `Values` class.
+
 ### 0.1.1
 * Added `Char` class.
 * Added `Bodypart` enum in `Char` class.
-* Added `MakeAndAddKeyframe` method to `miKeyframes` class.
+* Added `MakeAndAddKeyframe` method to `MIKeyframes` class.
 
 ### 0.1.0
 * Created the program.
