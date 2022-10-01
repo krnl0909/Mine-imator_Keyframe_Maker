@@ -1,0 +1,28 @@
+{
+	"format": 33,
+	"created_in": "2.0 Pre-release 2",
+	"is_model": false,
+	"tempo": 24,
+	"length": 24,
+	"keyframes": [
+		{
+			"position": 0,
+			"values": {
+				"TRANSITION": "easeinoutcirc"
+			}
+		},
+		{
+			"position": 24,
+			"values": {
+				"ROT_X": 30,
+				"BEND_ANGLE_X": 30
+			}
+		}
+	],
+	"templates": [
+	],
+	"timelines": [
+	],
+	"resources": [
+	]
+}
