@@ -53,7 +53,7 @@
 	}
 	internal class MIKeyframes
 	{
-		#region 생성자와 변수
+		#region 생성자와 프로퍼티
 		public int format { get; set; }
 		public string created_in { get; set; }
 		public bool is_model { get; set; }
@@ -76,15 +76,24 @@
 		#endregion
 
 		#region public 메서드
-		/// <summary>
-		/// MakeKeyframe 메서드와 AddKeyframe 메서드를 합해둔 메서드.
-		/// </summary>
+		/// <summary>MakeKeyframe 메서드와 AddKeyframe 메서드를 합해둔 메서드.</summary>
 		/// <param name="pos">타임라인 상의 위치</param>
 		/// <param name="part_name">부위 이름(비었을 시 전체)</param>
 		/// <param name="values">Values 객체</param>
-		public void MakeAndAddKeyframe(int pos, string? part_name = null, Values? values = null)
+		public void Add(int pos, Char.Bodypart? part_name = null, Values? values = null)
 		{
-			AddKeyframe(MakeKeyframe(pos, part_name, values));
+			if (pos > length) length = pos;
+
+			AddKeyframe
+				(
+				MakeKeyframe
+					(
+						pos,
+						string.IsNullOrEmpty(part_name.ToString())
+						? null : part_name.ToString(),
+						values
+					)
+				);
 		}
 		#endregion
 
@@ -105,9 +114,7 @@
 			return kf;
 		}
 
-		/// <summary>
-		/// 키프레임을 배열에 추가한다.
-		/// </summary>
+		/// <summary>키프레임을 배열에 추가한다.</summary>
 		/// <param name="kf">Keyframe 객체</param>
 		private void AddKeyframe(Keyframe kf)
 		{

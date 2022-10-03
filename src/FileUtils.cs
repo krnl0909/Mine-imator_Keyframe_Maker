@@ -1,5 +1,6 @@
 ﻿namespace MKM
 {
+	/// <summary>파일 입출력 때 유용한 함수들을 다룬다.</summary>
 	static internal class FileUtils
 	{
 		/// <summary>위치와 json 배열을 받아 .miframes 파일로 출력한다.</summary>

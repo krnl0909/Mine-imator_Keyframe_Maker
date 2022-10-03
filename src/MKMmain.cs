@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using static MKM.Char.Bodypart;
 
 namespace MKM
 {
@@ -6,11 +7,11 @@ namespace MKM
 	{
 		static void Main(string[] args)
 		{
-			MIKeyframes mikf = new MIKeyframes();
+			var mikf = new MIKeyframes();
 			var settings = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
 
-			mikf.MakeAndAddKeyframe(0, Char.Bodypart.right_arm.ToString());
-			mikf.MakeAndAddKeyframe(24, Char.Bodypart.right_arm.ToString(), new Values(ROT_X: 30, BEND_ANGLE_X: 30));
+			mikf.Add(0, right_arm);
+			mikf.Add(24, right_arm, new Values(ROT_X: 30, BEND_ANGLE_X: 30));
 
 			FileUtils.WriteMIKeyframes(JsonConvert.SerializeObject(mikf, settings));
 		}
